@@ -1,43 +1,47 @@
-import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-
 import ButtonStandard from '.'
 
-const stories = storiesOf('Core/ButtonStandard', module)
-
-stories.add('Info', () => <ButtonStandard>Standard Button</ButtonStandard>, {
-  info: {
-    inline: true,
-    text: `
-      Basic button component, building on the ButtonBase component.
-    `
+export default {
+  title: 'Core/ButtonStandard',
+  component: ButtonStandard,
+  args: {
+    children: 'Standard Button'
+  },
+  argTypes: {
+    block: {
+      type: { name: 'boolean', required: false }
+    }
   }
-})
+}
 
-stories.add('As an anchor', () => (
-  <ButtonStandard href="#">Anchor</ButtonStandard>
-))
+export const Default = (args) => <ButtonStandard {...args} />
 
-stories.add('As a button', () => (
-  <ButtonStandard onClick={action('clicked')}>Button</ButtonStandard>
-))
+export const AsAnchor = Default.bind({})
+AsAnchor.args = {
+  href: '#'
+}
 
-stories.add('With wrapping text', () => (
-  <ButtonStandard>
-    Text
-    <br />
-    Wrapping
-  </ButtonStandard>
-))
+export const WithWrappingText = Default.bind({})
+WithWrappingText.args = {
+  children: (
+    <>
+      Text
+      <br />
+      Wrapping
+    </>
+  )
+}
 
-stories.add('Block (full-width)', () => (
-  <ButtonStandard block>Block Button</ButtonStandard>
-))
+export const FullWidth = Default.bind({})
+FullWidth.args = {
+  block: true
+}
 
-stories.add('Loading state', () => (
-  <ButtonStandard loading>Loading Button</ButtonStandard>
-))
+export const LoadingState = Default.bind({})
+LoadingState.args = {
+  loading: true
+}
 
-stories.add('Disabled', () => (
-  <ButtonStandard disabled>Disabled Button</ButtonStandard>
-))
+export const Disabled = Default.bind({})
+Disabled.args = {
+  disabled: true
+}

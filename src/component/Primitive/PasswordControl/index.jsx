@@ -4,6 +4,11 @@ import { oneOf } from 'prop-types'
 import DecoratedTextControl from '../DecoratedTextControl'
 import IconButton from '../IconButton'
 
+/**
+ * A wrapper around a TextControl component which adds password visibility
+ * toggling functionality. When the toggle button is pressed, focus
+ * immediately returns to the input.
+ */
 const PasswordControl = ({ type, ...other }) => {
   const [toggleType, setType] = useState(type)
   const controlEl = useRef(null)

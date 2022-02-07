@@ -5,6 +5,13 @@ import styles from './Spinner.module.scss'
 
 import VisuallyHidden from '../VisuallyHidden'
 
+/**
+ * Simple SVG spinner which can be used to indicate loading.
+
+ * If this component appears in the DOM but is not visible, pass the
+ * \`paused\` prop to remove the performance overhead of the multiple
+ * animations.
+ */
 const Spinner = ({ a11yText, paused, revealDelay, size }) => (
   <div
     className={classNames(styles.Spinner, paused && styles.paused)}

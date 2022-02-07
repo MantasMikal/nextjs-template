@@ -1,78 +1,58 @@
-import { storiesOf } from '@storybook/react'
-
 import IconButton from '.'
+import { types } from '@/component/Primitive/Icon'
 
-const stories = storiesOf('Core/IconButton', module)
-
-stories.add(
-  'Info',
-  () => (
-    <IconButton type="button" icon="_placeholder" a11yText="Placeholder icon" />
-  ),
-  {
-    info: {
-      inline: true,
-      text: `
-        A simple button component used to present clickable Icons
-      `
+export default {
+  title: 'Core/IconButton',
+  component: IconButton,
+  args: {
+    iconWidth: 32,
+    iconHeight: 32,
+    icon: '_placeholder'
+  },
+  argTypes: {
+    icon: {
+      control: {
+        options: [...types],
+        type: 'select'
+      }
     }
   }
-)
+}
 
-stories.add('Default state', () => (
-  <IconButton type="button" icon="_placeholder" a11yText="Placeholder icon" />
-))
+export const Default = (args) => <IconButton {...args} type="button" />
 
-stories.add('Solid colour', () => (
-  <IconButton
-    type="button"
-    icon="_placeholder"
-    a11yText="Placeholder icon"
-    solid
-  />
-))
+export const SolidColour = Default.bind({})
+SolidColour.args = {
+  solid: true
+}
 
-stories.add('Rounded', () => (
-  <IconButton
-    type="button"
-    icon="_placeholder"
-    a11yText="Placeholder icon"
-    solid
-    rounded
-  />
-))
+export const Rounded = Default.bind({})
+Rounded.args = {
+  rounded: true,
+  solid: true
+}
 
-stories.add('Small', () => (
-  <IconButton
-    type="button"
-    icon="_placeholder"
-    a11yText="Placeholder icon"
-    small
-  />
-))
+export const Small = Default.bind({})
+Small.args = {
+  small: true
+}
 
-stories.add('With additional content', () => (
-  <IconButton type="button" icon="_placeholder" a11yText="" small transparent>
-    Example content
-  </IconButton>
-))
+export const WithAdditionalContent = Default.bind({})
+WithAdditionalContent.args = {
+  transparent: true,
+  small: true,
+  children: 'Example content'
+}
 
-stories.add('Custom icon size', () => (
-  <IconButton
-    type="button"
-    icon="_placeholder"
-    a11yText="Placeholder icon"
-    iconWidth={16}
-    solid
-  />
-))
+export const WithCustomSize = Default.bind({})
+WithCustomSize.args = {
+  iconWidth: 16,
+  iconHeight: 16,
+  solid: true
+}
 
-stories.add('With increased hit-area', () => (
-  <IconButton
-    type="button"
-    icon="_placeholder"
-    a11yText="Placeholder icon"
-    increaseHitArea
-    small
-  />
-))
+export const WithIncreasedHitArea = Default.bind({})
+WithIncreasedHitArea.args = {
+  small: true,
+  increaseHitArea: true
+}

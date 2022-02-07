@@ -3,6 +3,9 @@ import { bool, node } from 'prop-types'
 
 import styles from './TextAlign.module.scss'
 
+/**
+ * Sets the text-alignment of child components`
+ */
 const TextAlign = ({ center, children, justify, left, right }) => {
   const getAlignmentType = () => {
     if (center) return 'center'

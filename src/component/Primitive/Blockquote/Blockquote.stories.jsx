@@ -1,38 +1,23 @@
-import { storiesOf } from '@storybook/react'
-
 import Blockquote from '.'
 
-const stories = storiesOf('Core/Blockquote', module)
+export default {
+  title: 'Core/Blockqoute',
+  component: Blockquote
+}
 
-stories.add(
-  'Info',
-  () => (
-    <Blockquote citation="Firstname Lastname" quotemarks>
-      This is an amazing pull quote for an article
-    </Blockquote>
-  ),
-  {
-    info: {
-      inline: true,
-      text: `
-        Semantic markup for a quotation, with optional attribution.
-      `
-    }
-  }
+export const Default = (args) => (
+  <Blockquote {...args}>
+    This is an amazing pull quote for an article
+  </Blockquote>
 )
 
-stories.add('Quotation only', () => (
-  <Blockquote>This is an amazing pull quote for an article</Blockquote>
-))
+export const WithCitation = Default.bind({})
+WithCitation.args = {
+  citation: 'Firstname Lastname'
+}
 
-stories.add('With citation', () => (
-  <Blockquote citation="Firstname Lastname">
-    This is an amazing pull quote for an article
-  </Blockquote>
-))
-
-stories.add('With quote marks', () => (
-  <Blockquote quoteMarks>
-    This is an amazing pull quote for an article
-  </Blockquote>
-))
+export const WithQuoteMarks = Default.bind({})
+WithQuoteMarks.args = {
+  quoteMarks: true,
+  citation: 'Firstname Lastname'
+}

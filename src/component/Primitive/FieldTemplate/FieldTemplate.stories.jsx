@@ -1,7 +1,3 @@
-import { storiesOf } from '@storybook/react'
-
-import { days, months, years } from '@/lib/date-part-generator'
-
 import FieldTemplate from './'
 import TextControl from '../TextControl'
 import CheckControlGroup from '../CheckControlGroup'
@@ -11,92 +7,81 @@ import VisuallyHidden from '../VisuallyHidden'
 import SelectControl from '../SelectControl'
 import ShrinkWrap from '../ShrinkWrap'
 
-const stories = storiesOf('Form/FieldTemplate', module)
+// Setup
+const days = [...Array(31).keys()].map((i) => `${i + 1}`)
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+]
+const year = new Date().getFullYear()
+const years = []
+for (var i = 0; i <= 10; ++i) years.push(`${year - i}`)
 
-stories.add(
-  'Info',
-  () => (
-    <FieldTemplate
-      label="Example text question"
-      status="success"
-      required
-      feedback="Good answer"
-      controlName="exampleText"
-    >
-      <TextControl
-        name="exampleText"
-        type="text"
-        placeholder="Example placeholder"
-        required
-      />
-    </FieldTemplate>
-  ),
-  {
-    info: {
-      inline: true,
-      text: `
-        Pre-configured combinations of Field components which cover most
-        common use cases
-      `
+export default {
+  title: 'Form/FieldTemplate',
+  component: FieldTemplate,
+  argTypes: {
+    status: {
+      control: {
+        type: 'inline-radio',
+        options: ['success', 'error', 'warning', 'notice']
+      }
+    },
+    hideLabel: {
+      type: 'boolean'
+    },
+    label: {
+      type: 'string'
+    },
+    required: {
+      type: 'boolean'
+    },
+    feedback: {
+      type: 'string'
     }
   }
+}
+
+export const TextTemplate = (args) => (
+  <FieldTemplate
+    label="Example text question"
+    status="success"
+    required
+    feedback="Good answer"
+    controlName="exampleText"
+    {...args}
+  >
+    <TextControl
+      name="exampleText"
+      type="text"
+      placeholder="Example placeholder"
+      required
+      {...args}
+    />
+  </FieldTemplate>
 )
 
-stories.add('Text template (default)', () => (
-  <FieldTemplate
-    label="Example text question"
-    status="success"
-    required
-    feedback="Good answer"
-    controlName="exampleText"
-  >
-    <TextControl
-      name="exampleText"
-      type="text"
-      placeholder="Example placeholder"
-      required
-    />
-  </FieldTemplate>
-))
+export const TextTemplateWithHiddenLabel = TextTemplate.bind({})
+TextTemplateWithHiddenLabel.args = {
+  hideLabel: true
+}
 
-stories.add('Text template with hidden label', () => (
-  <FieldTemplate
-    hideLabel
-    label="Example text question"
-    status="success"
-    required
-    feedback="Good answer"
-    controlName="exampleText"
-  >
-    <TextControl
-      name="exampleText"
-      type="text"
-      placeholder="Example placeholder"
-      required
-    />
-  </FieldTemplate>
-))
+export const TextTemplateDisabled = TextTemplate.bind({})
+TextTemplateDisabled.args = {
+  disabled: true
+}
 
-stories.add('Text template - disabled', () => (
-  <FieldTemplate
-    label="Example text question"
-    status="success"
-    required
-    disabled
-    feedback="Good answer"
-    controlName="exampleText"
-  >
-    <TextControl
-      name="exampleText"
-      type="text"
-      placeholder="Example placeholder"
-      required
-      disabled
-    />
-  </FieldTemplate>
-))
-
-stories.add('Check template', () => (
+export const CheckTemplate = (args) => (
   <FieldTemplate
     template="check"
     label="Example check question"
@@ -104,6 +89,7 @@ stories.add('Check template', () => (
     status="error"
     feedback="Please select at least one option"
     controlName="checkboxExample"
+    {...args}
   >
     <CheckControlGroup a11yLabel="Example checkboxes">
       <CheckControl type="checkbox" name="checkboxExample" value="1">
@@ -117,30 +103,23 @@ stories.add('Check template', () => (
       </CheckControl>
     </CheckControlGroup>
   </FieldTemplate>
-))
+)
+CheckTemplate.args = {
+  template: 'check'
+}
 
-stories.add('Check template with hidden label', () => (
-  <FieldTemplate
-    hideLabel
-    template="check"
-    label="Example check question"
-    assistance="Example assistance text"
-    status="error"
-    feedback="Please select at least one option"
-    controlName="checkboxExample"
-  >
-    <CheckControl type="checkbox" name="checkboxExample" value="1">
-      Option one
-    </CheckControl>
-  </FieldTemplate>
-))
+export const CheckTemplateWithHiddenLabel = CheckTemplate.bind({})
+CheckTemplateWithHiddenLabel.args = {
+  hideLabel: true
+}
 
-stories.add('Multi-text template (even width)', () => (
+export const MultiTextTemplate = (args) => (
   <FieldTemplate
     template="multiText"
     label="Example multi-text question"
     required
     controlName="exampleText"
+    {...args}
   >
     <ShrinkWrap fullWidth>
       <ShrinkWrap.Item shrink>
@@ -148,7 +127,7 @@ stories.add('Multi-text template (even width)', () => (
           <VisuallyHidden>Day</VisuallyHidden>
           <SelectControl name="day" required>
             <option value="">Day</option>
-            {days().map((day) => (
+            {days.map((day) => (
               <option value={day} key={`day${day}`}>
                 {day}
               </option>
@@ -161,7 +140,7 @@ stories.add('Multi-text template (even width)', () => (
           <VisuallyHidden>Month</VisuallyHidden>
           <SelectControl name="month" required>
             <option value="">Month</option>
-            {months().map((month) => (
+            {months.map((month) => (
               <option value={month} key={`month${month}`}>
                 {month}
               </option>
@@ -174,7 +153,7 @@ stories.add('Multi-text template (even width)', () => (
           <VisuallyHidden>Year</VisuallyHidden>
           <SelectControl name="year" required>
             <option value="">Year</option>
-            {years().map((year) => (
+            {years.map((year) => (
               <option value={year} key={`year${year}`}>
                 {year}
               </option>
@@ -184,9 +163,12 @@ stories.add('Multi-text template (even width)', () => (
       </ShrinkWrap.Item>
     </ShrinkWrap>
   </FieldTemplate>
-))
+)
+MultiTextTemplate.args = {
+  template: 'multiText'
+}
 
-stories.add('Multi-text template (auto width)', () => (
+export const MultiTextTemplateWithAutoWidth = (args) => (
   <FieldTemplate
     template="multiText"
     label="Example multi-text question"
@@ -194,13 +176,14 @@ stories.add('Multi-text template (auto width)', () => (
     required
     feedback="Good answer"
     controlName="exampleText"
+    {...args}
   >
     <ShrinkWrap fullWidth>
       <ShrinkWrap.Item>
         <label>
           <VisuallyHidden>Day</VisuallyHidden>
           <SelectControl name="day">
-            {days().map((day) => (
+            {days.map((day) => (
               <option value={day} key={`day${day}`}>
                 {day}
               </option>
@@ -212,7 +195,7 @@ stories.add('Multi-text template (auto width)', () => (
         <label>
           <VisuallyHidden>Month</VisuallyHidden>
           <SelectControl name="month">
-            {months().map((month) => (
+            {months.map((month) => (
               <option value={month} key={`month${month}`}>
                 {month}
               </option>
@@ -224,7 +207,7 @@ stories.add('Multi-text template (auto width)', () => (
         <label>
           <VisuallyHidden>Year</VisuallyHidden>
           <SelectControl name="year">
-            {years().map((year) => (
+            {years.map((year) => (
               <option value={year} key={`year${year}`}>
                 {year}
               </option>
@@ -234,4 +217,7 @@ stories.add('Multi-text template (auto width)', () => (
       </ShrinkWrap.Item>
     </ShrinkWrap>
   </FieldTemplate>
-))
+)
+MultiTextTemplateWithAutoWidth.args = {
+  template: 'multiText'
+}

@@ -14,6 +14,9 @@ export const sizes = [
   'small'
 ]
 
+/**
+ * Outputs text with a given size/style and element.
+ */
 const Type = ({ children, className, as, size, tight }) => (
   <Element
     as={as}

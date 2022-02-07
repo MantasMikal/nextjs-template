@@ -1,9 +1,80 @@
-import { storiesOf } from '@storybook/react'
-
+/* eslint-disable react/no-unescaped-entities */
 import Prose from '.'
 
-const stories = storiesOf('Core/Prose', module)
+export default {
+  title: 'Core/Prose',
+  component: Prose
+}
 
+export const Default = (args) => (
+  <Prose {...args}>
+    <h1>Heading 1 as text</h1>
+    <p>
+      Vivamus luctus <a href="/">this is a text link</a> urna sed{' '}
+      <em>emphasised text</em> urna ultricies <strong>strong text</strong> ac
+      tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam
+      mattis viverra.
+    </p>
+    <p>
+      Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris,
+      quis.
+    </p>
+    <h2>Heading 2 as text</h2>
+    <p>
+      Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare
+      ante, ac egestas est urna sit amet arcu.
+    </p>
+  </Prose>
+)
+
+export const AllStyles = (args) => (
+  <Prose {...args}>
+    <ProseText />
+  </Prose>
+)
+
+export const Inversed = (args) => (
+  <div style={{ background: '#333', color: '#eee' }}>
+    <Prose {...args} inverse>
+      <ProseText />
+    </Prose>
+  </div>
+)
+
+export const HTMLPassedAsString = () => (
+  <Prose dangerousHtml="<p><strong>This text</strong> may have been passed from <em>a CMS</em>.</p><p>Do not use for User-supplied content.</p>" />
+)
+
+export const InlineHTMLOVerrides = () => {
+  const inlineStyles = {
+    boxSizing: 'content-box',
+    color: '#000fff',
+    fontFamily: 'Impact',
+    fontSize: '40px',
+    fontStyle: 'italic',
+    fontWeight: 'bold',
+    lineHeight: '40px',
+    margin: '40px',
+    padding: '40px',
+    textDecoration: 'underline'
+  }
+  return (
+    <>
+      <Prose>
+        <p style={inlineStyles}>
+          This HTML has inline styles similar to the ones left in by copying
+          text into WYSIWYG editors, but is wrapped in a Prose component. It
+          should look like regular prose text.
+        </p>
+      </Prose>
+      <p style={inlineStyles}>
+        This HTML has the same styles, but isn't wrapped in a Prose component.
+      </p>
+    </>
+  )
+}
+
+// SETUP
 const ProseText = () => (
   <>
     <h1>Typography</h1>
@@ -174,90 +245,3 @@ const ProseText = () => (
     </p>
   </>
 )
-
-stories.add(
-  'Info',
-  () => (
-    <Prose>
-      <h1>Heading 1 as text</h1>
-      <p>
-        Vivamus luctus <a href="/">this is a text link</a> urna sed{' '}
-        <em>emphasised text</em> urna ultricies <strong>strong text</strong> ac
-        tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu
-        diam mattis viverra.
-      </p>
-      <p>
-        Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris,
-        quis.
-      </p>
-      <h2>Heading 2 as text</h2>
-      <p>
-        Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus
-        ornare ante, ac egestas est urna sit amet arcu.
-      </p>
-    </Prose>
-  ),
-  {
-    info: {
-      inline: true,
-      text: `
-        Prose should wrap any large body of text-based content and provides
-        uniform sizing and spacing between elements.
-
-        It can aslo accept a string of HTML to render, for example from a
-        WYSIWYG editor. NOTE: it uses [\`dangerouslySetInnerHTML\`](https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml)
-        so do not use this method for user-supplied or untrusted content.
-
-        Prose will override most inline styles to avoid cases where content is
-        pasted into a WYSIWYG from Word or similar with inline styles attached.
-        `
-    }
-  }
-)
-
-stories.add('Default state', () => (
-  <Prose>
-    <ProseText />
-  </Prose>
-))
-
-stories.add('Inverse state', () => (
-  <div style={{ background: '#333', color: '#eee' }}>
-    <Prose inverse>
-      <ProseText />
-    </Prose>
-  </div>
-))
-
-stories.add('HTML passed as string', () => (
-  <Prose dangerousHtml="<p><strong>This text</strong> may have been passed from <em>a CMS</em>.</p><p>Do not use for User-supplied content.</p>" />
-))
-
-stories.add('Inline HTML overrides', () => {
-  const inlineStyles = {
-    boxSizing: 'content-box',
-    color: '#000fff',
-    fontFamily: 'Impact, cursive',
-    fontSize: '40px',
-    fontStyle: 'italic',
-    fontWeight: 'bold',
-    lineHeight: '40px',
-    margin: '40px',
-    padding: '40px',
-    textDecoration: 'underline'
-  }
-  return (
-    <>
-      <Prose>
-        <p style={inlineStyles}>
-          This HTML has inline styles similar to the ones left in by copying
-          text into WYSIWYG editors, but is wrapped in a Prose component. It
-          should look like regular prose text.
-        </p>
-      </Prose>
-      <p style={inlineStyles}>
-        This HTML has the same styles, but isn't wrapped in a Prose component.
-      </p>
-    </>
-  )
-})

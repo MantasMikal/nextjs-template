@@ -6,6 +6,11 @@ import styles from './Container.module.scss'
 
 export const sizes = ['small', 'medium', 'large', 'wide']
 
+/**
+ * A component used to provide a maximum width for child components.
+ * Optionally center-aligned, with preset \`size\` values available. Can
+ * also provide gutter spacing.
+ */
 const Container = ({
   as,
   center,

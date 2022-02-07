@@ -1,27 +1,18 @@
-import { storiesOf } from '@storybook/react'
-
 import Type, { sizes } from '.'
 
-const stories = storiesOf('Core/Type', module)
+export default {
+  title: 'Core/Type',
+  component: Type
+}
 
-stories.add(
-  'Info',
-  () => (
-    <Type size="title" element="h1">
-      Example Type
-    </Type>
-  ),
-  {
-    info: {
-      inline: true,
-      text: `
-        Outputs text with a given size/style and element.
-      `
-    }
-  }
-)
+export const Default = (args) => <Type {...args}>Example Type</Type>
 
-stories.add('All available sizes', () => (
+export const WithTightModifier = Default.bind({})
+WithTightModifier.args = {
+  tight: true
+}
+
+export const AllSizes = () => (
   <div>
     {sizes.map((size) => (
       <div style={{ margin: '5px 0 20px' }} key={`Type${size}`}>
@@ -30,34 +21,17 @@ stories.add('All available sizes', () => (
       </div>
     ))}
   </div>
-))
+)
 
-stories.add('Custom element', () => (
+export const WithCustomElement = (args) => (
   <div>
     {['h1', 'a', 'span'].map((element) => (
       <div style={{ margin: '5px 0 20px' }} key={`Type${element}`}>
         <code style={{ display: 'block' }}>{element}</code>
-        <Type as={element}>Example content as &lt;{element}/&gt;</Type>
+        <Type {...args} as={element}>
+          Example content as &lt;{element}/&gt;
+        </Type>
       </div>
     ))}
   </div>
-))
-
-stories.add('with “tight” line-height modifier', () => (
-  <div>
-    <div style={{ margin: '5px 0 20px' }}>
-      <code style={{ display: 'block' }}>without `tight` modifier</code>
-      <Type>
-        Example content <br />
-        over multiple lines
-      </Type>
-    </div>
-    <div style={{ margin: '5px 0 20px' }}>
-      <code style={{ display: 'block' }}>with `tight` modifier</code>
-      <Type tight>
-        Example content <br />
-        over multiple lines
-      </Type>
-    </div>
-  </div>
-))
+)

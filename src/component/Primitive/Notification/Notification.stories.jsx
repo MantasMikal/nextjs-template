@@ -1,4 +1,3 @@
-import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
 import { StatusContextProvider } from '@/component/Context/StatusContext'
@@ -7,34 +6,33 @@ import Notification from '.'
 import Prose from '../Prose'
 import Stack from '../Stack'
 
-const stories = storiesOf('Core/Notification', module)
-
-stories.add(
-  'Info',
-  () => (
-    <Notification status="success" onDismiss={action('Dismiss')}>
-      Content
-    </Notification>
-  ),
-  {
-    info: {
-      inline: true,
-      text: `
-        A status-ready notification component. If passed an onDismiss function,
-        a close button is added to the right-hand side.
-      `
+export default {
+  title: 'Core/Notification',
+  component: Notification,
+  argTypes: {
+    status: {
+      control: {
+        type: 'inline-radio',
+        options: ['success', 'error', 'warning', 'notice']
+      }
     }
+  },
+  args: {
+    children: 'Content'
   }
-)
+}
 
-stories.add('Default state', () => <Notification>Content</Notification>)
+export const Default = (args) => <Notification {...args} />
 
-stories.add('With Icon', () => (
-  <Notification icon="_placeholder">Content</Notification>
-))
+export const WithIcon = Default.bind({})
+WithIcon.args = {
+  icon: '_placeholder'
+}
 
-stories.add('With long content', () => (
-  <Notification>
+export const WithLongContent = Default.bind({})
+WithLongContent.args = {
+  icon: '_placeholder',
+  children: (
     <Prose>
       Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget
       lacinia odio sem nec elit. Sociis natoque penatibus et magnis dis
@@ -43,27 +41,34 @@ stories.add('With long content', () => (
       dapibus posuere velit aliquet. Maecenas faucibus mollis interdum. Vivamus
       sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
     </Prose>
-  </Notification>
-))
+  )
+}
 
-stories.add('Dismiss button', () => (
-  <Notification onDismiss={action('Dismiss')}>Content</Notification>
-))
+export const WithDismissButton = Default.bind({})
+WithDismissButton.args = {
+  onDismiss: action('Dismiss')
+}
 
-stories.add('Status (direct)', () => (
-  <Notification status="notice">Content</Notification>
-))
+export const WithStatus = Default.bind({})
+WithStatus.args = {
+  status: 'warning'
+}
 
-stories.add('Status (via context)', () => (
+export const WithStatusContext = () => (
   <StatusContextProvider status="error">
     <Notification>Content</Notification>
   </StatusContextProvider>
-))
+)
+export const WithShadow = Default.bind({})
+WithShadow.args = {
+  shadow: true
+}
 
-stories.add('Status (all)', () => (
+export const AllStatus = (args) => (
   <Stack>
     {['none', 'success', 'notice', 'warning', 'error'].map((status) => (
       <Notification
+        {...args}
         key={`status-${status}`}
         status={status}
         icon="_placeholder"
@@ -74,6 +79,4 @@ stories.add('Status (all)', () => (
       </Notification>
     ))}
   </Stack>
-))
-
-stories.add('Shadow', () => <Notification shadow>Content</Notification>)
+)

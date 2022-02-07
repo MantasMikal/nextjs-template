@@ -1,30 +1,28 @@
-import { storiesOf } from '@storybook/react'
-
 import Spinner from '.'
 
-const stories = storiesOf('Core/Spinner', module)
+export default {
+  title: 'Core/Spinner',
+  component: Spinner
+}
 
-stories.add('Info', () => <Spinner />, {
-  info: {
-    inline: true,
-    text: `
-      Simple SVG spinner which can be used to indicate loading.
+export const Default = (args) => <Spinner {...args} />
 
-      If this component appears in the DOM but is not visible, pass the
-      \`paused\` prop to remove the performance overhead of the multiple
-      animations.
-    `
-  }
-})
+export const Paused = Default.bind({})
+Paused.args = {
+  paused: true
+}
 
-stories.add('Default state', () => <Spinner />)
+export const DelayBeforeReveal = Default.bind({})
+DelayBeforeReveal.args = {
+  revealDelay: 2000
+}
 
-stories.add('Paused', () => <Spinner paused />)
+export const CustomSize = Default.bind({})
+CustomSize.args = {
+  size: 50
+}
 
-stories.add('Delay before reveal', () => <Spinner revealDelay={2000} />)
-
-stories.add('Custom size', () => <Spinner size={50} />)
-
-stories.add('Custom accessible text', () => (
-  <Spinner a11yText="Loading 5 images" />
-))
+export const CustomAccessibleText = Default.bind({})
+CustomAccessibleText.args = {
+  a11yText: 'Loading 5 images'
+}

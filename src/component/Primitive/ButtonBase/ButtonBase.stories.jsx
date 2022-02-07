@@ -1,36 +1,37 @@
-import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-
 import ButtonBase from '.'
 
-const stories = storiesOf('Core/ButtonBase', module)
-
-stories.add('Info', () => <ButtonBase>Base Button</ButtonBase>, {
-  info: {
-    inline: true,
-    text: `
-      A base for building button components, which sets up basic (un)styling,
-      along with default options, such as block-level or disabled styling.
-    `
+export default {
+  title: 'Core/ButtonBase',
+  component: ButtonBase,
+  args: {
+    children: 'Base Button'
   }
-})
+}
 
-stories.add('As an anchor', () => <ButtonBase href="#">Anchor</ButtonBase>)
+export const Default = (args) => <ButtonBase {...args} />
 
-stories.add('As a button', () => (
-  <ButtonBase onClick={action('clicked')}>Button</ButtonBase>
-))
+export const AsAnchor = Default.bind({})
+AsAnchor.args = {
+  href: '#'
+}
 
-stories.add('With wrapping text', () => (
-  <ButtonBase>
-    Text
-    <br />
-    Wrapping
-  </ButtonBase>
-))
+export const WithWrappingText = Default.bind({})
+WithWrappingText.args = {
+  children: (
+    <>
+      Text
+      <br />
+      Wrapping
+    </>
+  )
+}
 
-stories.add('Block (full-width)', () => (
-  <ButtonBase block>Block Button</ButtonBase>
-))
+export const Block = Default.bind({})
+Block.args = {
+  block: true
+}
 
-stories.add('Disabled', () => <ButtonBase disabled>Disabled Button</ButtonBase>)
+export const Disabled = Default.bind({})
+Disabled.args = {
+  disabled: true
+}

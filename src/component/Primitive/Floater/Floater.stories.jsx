@@ -1,9 +1,4 @@
-import { storiesOf } from '@storybook/react'
-
 import Floater from '.'
-import ResponsiveMedia from '../ResponsiveMedia'
-
-const stories = storiesOf('Layout/Floater', module)
 
 const content = (
   <p>
@@ -19,74 +14,33 @@ const content = (
   </p>
 )
 
-stories.add(
-  'Info',
-  () => (
-    <div style={{ overflow: 'auto' }}>
-      <Floater size="small" align="left">
-        <ResponsiveMedia ratio={6 / 8}>
-          <img src="https://source.unsplash.com/800x600?nature" alt="" />
-        </ResponsiveMedia>
-      </Floater>
-      {content}
-    </div>
-  ),
-  {
-    info: {
-      inline: true,
-      text: `
-        A wrapper which optionally floats children left/right, with options to
-        constrain content width. Useful for floating images/video within article
-        text content.
-      `
-    }
-  }
+export default {
+  title: 'Utility/Floater',
+  component: Floater
+}
+
+export const Default = (args) => (
+  <div style={{ overflow: 'auto' }}>
+    <Floater {...args}>
+      <img src="https://source.unsplash.com/800x600?nature" alt="" />
+    </Floater>
+    {content}
+  </div>
 )
 
-stories.add('Aligned left', () => (
-  <div style={{ overflow: 'auto' }}>
-    <Floater size="small" align="left">
-      <ResponsiveMedia ratio={6 / 8}>
-        <img src="https://source.unsplash.com/800x600?nature" alt="" />
-      </ResponsiveMedia>
-    </Floater>
-    {content}
-    {content}
-  </div>
-))
+export const AlignedLeft = Default.bind({})
+AlignedLeft.args = {
+  size: 'small',
+  align: 'left'
+}
 
-stories.add('Aligned right', () => (
-  <div style={{ overflow: 'auto' }}>
-    <Floater size="small" align="right">
-      <ResponsiveMedia ratio={6 / 8}>
-        <img src="https://source.unsplash.com/800x600?nature" alt="" />
-      </ResponsiveMedia>
-    </Floater>
-    {content}
-    {content}
-  </div>
-))
+export const AlignedRight = Default.bind({})
+AlignedRight.args = {
+  size: 'small',
+  align: 'right'
+}
 
-stories.add('With set size (no align)', () => (
-  <div style={{ overflow: 'auto' }}>
-    <Floater size="medium">
-      <ResponsiveMedia ratio={6 / 8}>
-        <img src="https://source.unsplash.com/800x600?nature" alt="" />
-      </ResponsiveMedia>
-    </Floater>
-    {content}
-    {content}
-  </div>
-))
-
-stories.add('With set size (with align)', () => (
-  <div style={{ overflow: 'auto' }}>
-    <Floater size="medium" align="left">
-      <ResponsiveMedia ratio={6 / 8}>
-        <img src="https://source.unsplash.com/800x600?nature" alt="" />
-      </ResponsiveMedia>
-    </Floater>
-    {content}
-    {content}
-  </div>
-))
+export const WithSetSize = Default.bind({})
+WithSetSize.args = {
+  size: 'medium'
+}

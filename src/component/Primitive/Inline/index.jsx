@@ -7,6 +7,9 @@ import styles from './Inline.module.scss'
 // const gaps = sassKeysToArray(styles.gaps)
 const gaps = ['small', 'medium', 'large']
 
+/**
+ *  A wrapper component which evenly horizontally spaces its children.
+ */
 const Inline = ({ children, gap, shrink }) => (
   <div
     className={classNames(

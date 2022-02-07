@@ -1,5 +1,3 @@
-import { storiesOf } from '@storybook/react'
-
 import { StatusContextProvider } from '@/component/Context/StatusContext'
 import SelectControl from '.'
 
@@ -18,109 +16,106 @@ const options = [
   </option>
 ]
 
-const stories = storiesOf('Form/SelectControl', module)
-
-stories.add(
-  'Info',
-  () => <SelectControl name="exampleSelect">{options}</SelectControl>,
-  {
-    info: {
-      inline: true,
-      text: `
-        Select dropdown, using custom styling to better match the standard
-        text-style control component.
-
-        _Note: some demos do not update when you select as they are presented as
-        controlled components, but using dummy onChange functions._
-      `
+export default {
+  title: 'Form/SelectControl',
+  component: SelectControl,
+  argTypes: {
+    status: {
+      control: {
+        type: 'inline-radio',
+        options: ['success', 'error', 'warning', 'notice']
+      }
+    },
+    size: {
+      control: {
+        type: 'number'
+      }
+    },
+    multiple: {
+      control: {
+        type: 'boolean'
+      }
     }
   }
+}
+
+export const Default = (args) => (
+  <SelectControl {...args} name="exampleSelect" onChange={() => {}}>
+    {options}
+  </SelectControl>
 )
 
-stories.add('Default state', () => (
-  <SelectControl name="exampleSelect" onChange={() => {}}>
-    {options}
-  </SelectControl>
-))
+export const PreSelectedValue = Default.bind({})
+PreSelectedValue.args = {
+  value: 'two'
+}
 
-stories.add('Pre-selected value', () => (
-  <SelectControl name="exampleSelect" value="two" onChange={() => {}}>
-    {options}
-  </SelectControl>
-))
+export const Disabled = Default.bind({})
+Disabled.args = {
+  disabled: true
+}
 
-stories.add('Disabled', () => (
-  <SelectControl name="exampleSelect" disabled onChange={() => {}}>
-    {options}
-  </SelectControl>
-))
+export const WithStatus = Default.bind({})
+WithStatus.args = {
+  status: 'success'
+}
 
-stories.add('Text with status (direct)', () => (
-  <SelectControl name="exampleSelect" type="text" status="error">
-    {options}
-  </SelectControl>
-))
-
-stories.add('Text with status (via context)', () => (
+export const WithStatusContext = (args) => (
   <StatusContextProvider status="success">
-    <SelectControl name="exampleSelect" type="text">
+    <SelectControl
+      {...args}
+      name="exampleSelect"
+      onChange={() => {}}
+      type="text"
+    >
       {options}
     </SelectControl>
   </StatusContextProvider>
-))
+)
 
-stories.add('Multi-select', () => (
-  <SelectControl name="exampleSelect" multiple>
+export const MultiSelect = (args) => (
+  <SelectControl onChange={() => {}} {...args} name="exampleSelect">
     {options}
   </SelectControl>
-))
+)
+MultiSelect.args = {
+  multiple: true
+}
 
-stories.add('Multi-line with custom height (too short)', () => (
-  <SelectControl name="exampleSelect" multiple size={2}>
-    {options}
-  </SelectControl>
-))
+export const MultiLineWithCustomTooShortHeight = MultiSelect.bind({})
+MultiLineWithCustomTooShortHeight.args = {
+  multiple: true,
+  size: 2
+}
 
-stories.add('Multi-line with custom height (too tall)', () => (
-  <SelectControl name="exampleSelect" multiple size={10}>
-    {options}
-  </SelectControl>
-))
+export const MultiLineWithCustomTooTallHeight = MultiSelect.bind({})
+MultiLineWithCustomTooTallHeight.args = {
+  multiple: true,
+  size: 10
+}
 
-stories.add('Default state - native', () => (
-  <SelectControl native name="exampleSelect" onChange={() => {}}>
-    {options}
-  </SelectControl>
-))
+export const DefaultNative = Default.bind({})
+DefaultNative.args = {
+  multiple: true,
+  native: true
+}
 
-stories.add('Text with status (direct) - native', () => (
-  <SelectControl native name="exampleSelect" type="text" status="error">
-    {options}
-  </SelectControl>
-))
+export const MultiSelectNative = MultiSelect.bind({})
+MultiSelectNative.args = {
+  multiple: true,
+  native: true
+}
 
-stories.add('Text with status (via context) - native', () => (
-  <StatusContextProvider status="success">
-    <SelectControl native name="exampleSelect" type="text">
-      {options}
-    </SelectControl>
-  </StatusContextProvider>
-))
+export const MultiLineWithCustomTooShortHeightNative = MultiSelect.bind({})
+MultiLineWithCustomTooShortHeightNative.args = {
+  multiple: true,
+  native: true,
+  size: 2
+}
 
-stories.add('Multi-select - native', () => (
-  <SelectControl native name="exampleSelect" multiple>
-    {options}
-  </SelectControl>
-))
-
-stories.add('Multi-line with custom height (too short) - native', () => (
-  <SelectControl native name="exampleSelect" multiple size={2}>
-    {options}
-  </SelectControl>
-))
-
-stories.add('Multi-line with custom height (too tall) - native', () => (
-  <SelectControl native name="exampleSelect" multiple size={10}>
-    {options}
-  </SelectControl>
-))
+export const MultiLineWithCustomTooTallHeightNative = MultiSelect.bind({})
+MultiLineWithCustomTooTallHeightNative.args = {
+  multiple: true,
+  native: true,
+  size: 10
+}
