@@ -1,4 +1,3 @@
-import React from 'react'
 import { arrayOf, number, shape, string } from 'prop-types'
 import stringToColor from '@/lib/string-to-color'
 
@@ -17,6 +16,7 @@ const buildDebugSrcSet = ({ srcSet, ratio }) =>
     src: buildDebugSrc({ width: image.width, height: image.width * ratio })
   }))
 
+// eslint-disable-next-line no-unused-vars
 const ResponsiveDebugImage = ({ src, srcSet, height, width, ...other }) => (
   <ResponsiveImage
     src={buildDebugSrc({ width, height })}

@@ -1,4 +1,3 @@
-import React from 'react'
 import classNames from 'classnames'
 import { arrayOf, node, number, object, oneOf, oneOfType } from 'prop-types'
 // import sassKeysToArray from '@/lib/sass-keys-to-array'

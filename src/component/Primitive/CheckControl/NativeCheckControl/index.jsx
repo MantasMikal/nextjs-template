@@ -1,4 +1,3 @@
-import React from 'react'
 import { bool, func, number, oneOf, string } from 'prop-types'
 
 const NativeCheckControl = ({

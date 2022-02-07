@@ -1,4 +1,3 @@
-import React from 'react'
 import { object } from 'prop-types'
 
 import styles from './DescriptionList.module.scss'

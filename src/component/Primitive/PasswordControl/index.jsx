@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { oneOf } from 'prop-types'
 
 import DecoratedTextControl from '../DecoratedTextControl'

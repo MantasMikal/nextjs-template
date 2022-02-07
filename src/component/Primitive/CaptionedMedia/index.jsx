@@ -1,4 +1,3 @@
-import React from 'react'
 import { bool, node } from 'prop-types'
 
 import styles from './CaptionedMedia.module.scss'

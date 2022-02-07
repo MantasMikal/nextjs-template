@@ -1,4 +1,3 @@
-import React from 'react'
 import { node, number } from 'prop-types'
 
 import styles from './ResponsiveMedia.module.scss'

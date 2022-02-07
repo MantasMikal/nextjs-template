@@ -1,4 +1,3 @@
-import React from 'react'
 import validateRequiredProps from '@/lib/validate-required-props'
 import { mount, shallow } from 'enzyme'
 import PasswordControl from '.'

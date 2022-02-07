@@ -1,4 +1,3 @@
-import React from 'react'
 import { func, node, oneOf, string, bool } from 'prop-types'
 
 import styles from './SelectableRow.module.scss'

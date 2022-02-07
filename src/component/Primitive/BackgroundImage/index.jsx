@@ -1,4 +1,3 @@
-import React from 'react'
 import { arrayOf, bool, number, shape, string } from 'prop-types'
 import classNames from 'classnames'
 

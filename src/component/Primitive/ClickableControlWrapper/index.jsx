@@ -1,4 +1,4 @@
-import React, { cloneElement } from 'react'
+import { cloneElement } from 'react'
 import { func, node, string } from 'prop-types'
 
 import styles from './ClickableControlWrapper.module.scss'

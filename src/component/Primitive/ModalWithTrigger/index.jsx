@@ -1,4 +1,4 @@
-import React, { cloneElement, useState } from 'react'
+import { cloneElement, useState } from 'react'
 import { node } from 'prop-types'
 
 import Modal from '../Modal'

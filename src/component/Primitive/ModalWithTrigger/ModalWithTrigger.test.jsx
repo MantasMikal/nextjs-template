@@ -1,4 +1,3 @@
-import React from 'react'
 import validateRequiredProps from '@/lib/validate-required-props'
 // import { render, fireEvent } from '@testing-library/react'
 import ModalWithTrigger from '.'

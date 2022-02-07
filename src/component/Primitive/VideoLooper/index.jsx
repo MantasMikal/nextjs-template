@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { bool, number } from 'prop-types'
 import classNames from 'classnames'
 

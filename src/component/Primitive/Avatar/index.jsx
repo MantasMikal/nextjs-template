@@ -1,4 +1,3 @@
-import React from 'react'
 import classNames from 'classnames'
 import { number, oneOfType, string } from 'prop-types'
 

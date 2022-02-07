@@ -1,7 +1,6 @@
-import { NextSeo } from "next-seo";
-import React from "react";
+import { NextSeo } from 'next-seo'
 
-import config from "../../../config";
+import config from '../../../config'
 
 const {
   title,
@@ -10,22 +9,22 @@ const {
   twitterHandle,
   themeColor,
   url,
-  locale,
-} = config.meta;
+  locale
+} = config.meta
 
 const GlobalMeta = () => {
   const optional = {
-    "application-name": fullTitle,
-    viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
-    "theme-color": themeColor,
-  };
+    'application-name': fullTitle,
+    viewport: 'width=device-width, initial-scale=1, viewport-fit=cover',
+    'theme-color': themeColor
+  }
 
   return (
     <NextSeo
       titleTemplate={`%s | ${title}`}
       twitter={{
-        cardType: "summary_large_image",
-        site: twitterHandle,
+        cardType: 'summary_large_image',
+        site: twitterHandle
       }}
       locale={locale}
       themeColor={themeColor}
@@ -34,7 +33,7 @@ const GlobalMeta = () => {
       twitterHandle={twitterHandle}
       canonical={url}
       openGraph={{
-        type: "website",
+        type: 'website',
         url: url,
         locale: locale,
         title: fullTitle,
@@ -42,44 +41,44 @@ const GlobalMeta = () => {
         site_name: title,
         images: [
           {
-            url: "/og-image.jpg",
+            url: '/og-image.jpg',
             width: 1200,
             height: 628,
-            alt: "Example",
-          },
-        ],
+            alt: 'Example'
+          }
+        ]
       }}
       additionalLinkTags={[
         ...[512, 192].map((size) => ({
-          rel: "apple-touch-icon",
+          rel: 'apple-touch-icon',
           href: `/icons/icon-${size}.png`,
-          type: "image/png",
-          sizes: `${size}x${size}`,
+          type: 'image/png',
+          sizes: `${size}x${size}`
         })),
         {
-          rel: "icon",
-          type: "image/png",
-          sizes: "16x16",
-          href: "/icons/favicon.svg",
+          rel: 'icon',
+          type: 'image/png',
+          sizes: '16x16',
+          href: '/icons/favicon.svg'
         },
         {
-          rel: "manifest",
-          href: "/manifest.json",
-        },
+          rel: 'manifest',
+          href: '/manifest.json'
+        }
       ]}
       additionalMetaTags={[
         ...Object.keys(optional).map((name) => {
-          if (!optional[name]) return;
+          if (!optional[name]) return
           return {
             property: name,
-            content: optional[name],
-          };
-        }),
+            content: optional[name]
+          }
+        })
       ]}
     />
-  );
-};
+  )
+}
 
-GlobalMeta.propTypes = {};
+GlobalMeta.propTypes = {}
 
-export default GlobalMeta;
+export default GlobalMeta

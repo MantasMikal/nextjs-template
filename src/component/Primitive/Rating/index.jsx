@@ -1,4 +1,3 @@
-import React from 'react'
 import { number } from 'prop-types'
 
 import RatingItem from './component/RatingItem'

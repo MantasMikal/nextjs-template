@@ -1,4 +1,3 @@
-import React from 'react'
 import { node, oneOf } from 'prop-types'
 import classNames from 'classnames'
 

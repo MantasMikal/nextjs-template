@@ -1,4 +1,3 @@
-import React from 'react'
 import validateRequiredProps from '@/lib/validate-required-props'
 import validatePropTypes from 'validate-prop-types'
 import { render } from '@testing-library/react'

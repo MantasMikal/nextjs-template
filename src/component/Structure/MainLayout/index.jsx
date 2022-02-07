@@ -1,4 +1,3 @@
-import React from 'react'
 import { node } from 'prop-types'
 
 import A11yNavigation from '@/component/Primitive/A11yNavigation'

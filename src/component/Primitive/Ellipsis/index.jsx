@@ -1,4 +1,3 @@
-import React from 'react'
 import { node, number, oneOfType, string } from 'prop-types'
 
 import styles from './Ellipsis.module.scss'

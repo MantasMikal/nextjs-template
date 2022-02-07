@@ -1,4 +1,3 @@
-import React from 'react'
 import { arrayOf, number, shape, string } from 'prop-types'
 
 import styles from './SplitHero.module.scss'

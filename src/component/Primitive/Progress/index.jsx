@@ -1,4 +1,3 @@
-import React from 'react'
 import { arrayOf, number, oneOfType } from 'prop-types'
 
 import styles from './Progress.module.scss'

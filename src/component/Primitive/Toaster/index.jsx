@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 // import {} from 'prop-types'
 
 import Toast from '../Toast'

@@ -1,4 +1,3 @@
-import React from 'react'
 import { bool, string } from 'prop-types'
 
 import shallowObjectToQuery from '@/lib/shallow-object-to-query'

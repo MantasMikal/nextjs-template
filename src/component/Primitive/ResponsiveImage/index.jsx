@@ -1,4 +1,3 @@
-import React from 'react'
 import { arrayOf, number, oneOf, shape, string } from 'prop-types'
 
 const srcSetFormatter = (srcSet) => {

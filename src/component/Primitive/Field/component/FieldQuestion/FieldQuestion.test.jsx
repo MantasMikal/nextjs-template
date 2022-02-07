@@ -1,4 +1,3 @@
-import React from 'react'
 import validatePropTypes from 'validate-prop-types'
 import { render } from '@testing-library/react'
 import FieldQuestion from '.'

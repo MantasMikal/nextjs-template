@@ -1,4 +1,3 @@
-import React from 'react'
 import { bool, node, oneOfType, string } from 'prop-types'
 
 import CheckControlText from './CheckControlText'

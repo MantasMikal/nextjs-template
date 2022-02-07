@@ -1,5 +1,3 @@
-import React from 'react'
-
 import styles from './FieldRequired.module.scss'
 
 const FieldRequired = () => (

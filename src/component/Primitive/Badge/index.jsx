@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { node, oneOf } from 'prop-types'
 import classNames from 'classnames'
 

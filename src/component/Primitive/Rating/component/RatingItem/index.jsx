@@ -1,4 +1,3 @@
-import React from 'react'
 import { bool, number } from 'prop-types'
 
 import styles from './RatingItem.module.scss'

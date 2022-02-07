@@ -1,4 +1,3 @@
-import React from 'react'
 import { bool, node, oneOf, string } from 'prop-types'
 
 import Field from '../../Field'
