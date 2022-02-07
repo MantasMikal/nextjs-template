@@ -1,0 +1,31 @@
+.StepProgressItem {
+  flex: 1 0 auto;
+  transition: background-color $duration-standard $easing-standard;
+  text-align: center;
+  color: $color-white;
+  background-color: $color-grey75;
+
+  & + & {
+    margin-left: 1px;
+  }
+}
+
+.complete {
+  background-color: $color-primary-light;
+}
+
+.current {
+  background-color: $color-primary-dark;
+}
+
+// .incomplete {}
+
+// Custom status
+
+.positive {
+  background-color: $color-status-success;
+}
+
+.negative {
+  background-color: $color-status-error;
+}

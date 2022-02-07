@@ -1,0 +1,30 @@
+$signpost-stack-breakpoint: $breakpoint-mobileLandscape;
+
+.Signpost {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid $color-grey50;
+  padding: spacing(2);
+  background: $color-white;
+  box-shadow: shadow(2);
+  border-radius: $radius-standard;
+  @include mq($signpost-stack-breakpoint) {
+    flex-basis: 30%;
+    flex-direction: column;
+    align-items: center;
+  }
+  @include mq($breakpoint-desktop) {
+    flex-basis: auto;
+  }
+}
+
+.SignpostIcon {
+  margin-right: spacing(1);
+  color: $color-primary;
+
+  @include mq($signpost-stack-breakpoint) {
+    margin-right: 0;
+    margin-bottom: spacing(1);
+  }
+}

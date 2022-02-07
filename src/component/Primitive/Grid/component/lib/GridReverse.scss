@@ -1,0 +1,20 @@
+@function _namespace-suffix($namespace, $suffix: '') {
+  @if ($namespace != '') {
+    $namespace: '-' + $namespace;
+  }
+  @return 'reverse' + $namespace;
+}
+
+@mixin grid-reverse($namespace: '') {
+  $namespace: _namespace-suffix($namespace);
+
+  .#{$namespace} {
+    direction: rtl;
+    text-align: right;
+
+    > * {
+      direction: ltr;
+      text-align: left;
+    }
+  }
+}

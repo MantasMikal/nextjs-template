@@ -1,0 +1,15 @@
+$SeparatedStack-color: $color-grey50;
+
+.SeparatedStack {
+  > * + * {
+    border-top: 1px solid $SeparatedStack-color;
+  }
+}
+
+.leading:first-child {
+  border-top: 1px solid $SeparatedStack-color;
+}
+
+.trailing:last-child {
+  border-bottom: 1px solid $SeparatedStack-color;
+}

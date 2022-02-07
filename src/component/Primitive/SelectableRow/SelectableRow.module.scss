@@ -1,0 +1,79 @@
+.SelectableRow {
+  display: block;
+  position: relative;
+  cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.SelectableRowInner {
+  display: flex;
+  align-items: center;
+  transition: background-color $duration-standard $easing-standard;
+}
+
+.SelectableRowControl {
+  // Position roughly in the correct place, then visually hide
+  position: absolute;
+  right: 0;
+  top: 50%;
+  height: 0;
+  width: 0;
+  opacity: 0;
+}
+
+.SelectableRowContent {
+  padding: spacing(1) 0;
+  flex-grow: 1;
+  padding-right: spacing(2);
+  overflow: hidden;
+}
+
+.SelectableRowIndicator {
+  width: spacing(2);
+  height: spacing(2);
+  border: 1px solid;
+  border-radius: $radius-small;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: transparent;
+  border-color: $color-grey50;
+  transition: all $duration-standard $easing-standard;
+
+  svg {
+    vertical-align: top;
+    transition: all $duration-standard $easing-standard;
+    // transform: scale(0);
+    // opacity: 0;
+    color: $color-white;
+  }
+}
+
+.SelectableRowControl:checked ~ .SelectableRowInner {
+  // background-color: $color-primary;
+  // color: $color-white;
+  // transition-duration: $duration-shortest;
+
+  .SelectableRowIndicator {
+    border-color: $color-primary;
+    background-color: $color-primary;
+    transition-duration: $duration-shortest;
+
+    svg {
+      transform: scale(1);
+      opacity: 1;
+      transition-duration: $duration-shortest;
+    }
+  }
+}
+
+.SelectableRowControl:focus ~ .SelectableRowInner {
+  .SelectableRowIndicator {
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.3);
+  }
+}

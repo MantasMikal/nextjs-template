@@ -1,0 +1,27 @@
+.Panel {
+  border-radius: $radius-standard;
+  border: 1px solid $color-grey50;
+  overflow: hidden;
+  box-shadow: shadow(2);
+  background-color: $color-white;
+}
+
+.PanelHeader {
+  padding: spacing(1) spacing(2);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+}
+
+.PanelHeaderText {
+  flex-grow: 1;
+}
+
+.PanelContent {
+  padding: spacing(2) 0;
+}
+
+.highlighted {
+  border-color: $color-primary;
+}

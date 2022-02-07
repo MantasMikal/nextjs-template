@@ -1,0 +1,42 @@
+.LoadingOverlay {
+  position: relative;
+}
+
+.LoadingOverlayContent {
+  .loading & {
+    pointer-events: none;
+    animation-name: loading-overlay-fade-out;
+    animation-duration: $duration-long;
+    animation-timing-function: $easing-standard;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+}
+
+.LoadingOverlayIndicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation-name: loading-overlay-fade-in;
+  animation-duration: $duration-long;
+  animation-timing-function: $easing-standard;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes loading-overlay-fade-in {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes loading-overlay-fade-out {
+  100% {
+    opacity: 0.2;
+  }
+}

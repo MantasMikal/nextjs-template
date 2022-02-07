@@ -1,0 +1,28 @@
+@mixin _grid-gutter($namespace, $width) {
+  @if ($namespace != '') {
+    $namespace: '-' + $namespace;
+  }
+
+  .gutter#{$namespace} {
+    margin-left: -($width);
+
+    & > * {
+      padding-left: _grid-gutter-item($width);
+    }
+  }
+}
+
+@function _grid-gutter-item($g) {
+  @if unit($g) == '%' {
+    $scale: 100 / (100 + $g);
+    @return ($scale * $g) + 0%;
+  } @else {
+    @return $g;
+  }
+}
+
+@mixin grid-gutters($gutters) {
+  @each $namespace, $width in $gutters {
+    @include _grid-gutter($namespace, $width);
+  }
+}

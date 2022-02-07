@@ -1,0 +1,28 @@
+@function _remove-duplicates($list, $recursive: false) {
+  $result: ();
+  @each $item in $list {
+    @if not index($result, $item) {
+      @if length($item) > 1 and $recursive {
+        $result: append($result, _remove-duplicates($item, $recursive));
+      } @else {
+        $result: append($result, $item);
+      }
+    }
+  }
+  @return $result;
+}
+
+@mixin grid-widths($namespace, $widths) {
+  $result: ();
+  @each $width in map-get($widths, $namespace) {
+    @for $i from 1 through $width - 1 {
+      $result: append($result, ($i / $width * 100));
+    }
+  }
+  $unique: _remove-duplicates($result);
+  @each $value in $unique {
+    .#{$namespace}-#{round($value)} {
+      width: ($value) + 0%;
+    }
+  }
+}

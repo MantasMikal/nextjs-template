@@ -1,0 +1,23 @@
+@import '../lib/GridGutter';
+@import '../lib/GridReverse';
+
+$gutters: (
+  'half': spacing(1),
+  'default': spacing(2),
+  'double': spacing(3)
+);
+
+// .GridWrapper {}
+
+@include grid-gutters($gutters);
+
+@include grid-reverse();
+
+@include mq($breakpoint-desktop) {
+  @include grid-reverse(d);
+}
+
+// :export {
+//   /* stylelint-disable-next-line property-no-unknown */
+//   gutters: map-keys($gutters);
+// }

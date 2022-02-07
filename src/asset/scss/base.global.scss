@@ -1,0 +1,26 @@
+@import '~backline-normalize/src/backline-normalize';
+@import 'font-face';
+
+// Let browsers know about available colour schemes
+// https://drafts.csswg.org/css-color-adjust-1/#color-scheme-prop
+// :root {
+//   color-scheme: light dark;
+// }
+
+// Remove ALL animations/transitions by making them (almost) immediately skip
+// to their finished state. May be overkill, but is a sensible start.
+// https://css-tricks.com/revisiting-prefers-reduced-motion-the-reduced-motion-media-query/
+@media screen and (prefers-reduced-motion: reduce), (update: slow) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  font-size: spacing(2);
+  line-height: math.div(3, 2);
+  font-weight: normal;    
+  font-family: $font-body;
+}

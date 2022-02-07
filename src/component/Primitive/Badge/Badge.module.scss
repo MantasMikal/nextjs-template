@@ -1,0 +1,19 @@
+.Badge {
+  display: inline-block;
+  text-align: center;
+  padding: spacing(0.5) spacing(1);
+  background-color: $color-grey75;
+  color: $color-black;
+  border-radius: spacing(0.5);
+  font-size: spacing(1.75);
+  line-height: 1;
+  min-height: spacing(1.75 + 1);
+  min-width: spacing(1.75 + 1);
+}
+
+@each $key, $value in $color-status-list {
+  .#{$key} {
+    background-color: $value !important;
+    color: $color-white;
+  }
+}

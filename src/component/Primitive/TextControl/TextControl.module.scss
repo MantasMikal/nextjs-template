@@ -1,0 +1,60 @@
+.TextControl {
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: $color-white;
+  transition: all $duration-standard $easing-standard;
+  padding: spacing(1) - 1 spacing(1.5) - 1;
+  color: inherit;
+  line-height: spacing(3);
+  border: 1px solid $color-grey75;
+  background-clip: padding-box;
+  border-radius: $radius-small;
+  caret-color: $color-primary;
+
+  // &::placeholder {}
+
+  &:hover,
+  &:focus {
+    transition-duration: $duration-shortest;
+  }
+
+  &:hover {
+    border-color: $color-grey50;
+  }
+
+  &:focus {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.3);
+    outline: 0;
+  }
+
+  &[type='date'] {
+    appearance: none;
+    height: spacing(6);
+  }
+}
+
+.multiLine {
+  height: auto;
+  resize: vertical;
+}
+
+@each $key, $value in $color-status-list {
+  .#{$key} {
+    border-color: $value !important;
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  color: $color-grey75 !important;
+  border-color: $color-grey75 !important;
+
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: none !important;
+  }
+}

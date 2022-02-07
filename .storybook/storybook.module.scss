@@ -1,0 +1,21 @@
+:global {
+  body,
+  #root {
+    height: 100%;
+    min-height: 100%;
+    overflow: visible;
+  }
+
+  // Story info panel/overlay
+  #story-root + div div {
+    > * + * {
+      margin-top: spacing(2);
+      list-style-position: inside;
+    }
+  }
+  .simplebar-wrapper {
+    > * + * {
+      margin-top: 0 !important;
+    }
+  }
+}

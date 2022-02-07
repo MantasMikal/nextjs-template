@@ -1,0 +1,29 @@
+.ClickableControlWrapper {
+  display: block;
+  width: 100%;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid transparent;
+    border-radius: $radius-small;
+  }
+
+  &:focus {
+    outline: 0;
+
+    &::after {
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.3);
+    }
+  }
+
+  > * {
+    pointer-events: none;
+  }
+}

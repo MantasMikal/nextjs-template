@@ -1,0 +1,11 @@
+// .HighlightColor {}
+
+$highlight-color-list: (
+  primary: $color-primary
+);
+
+@each $key, $value in $highlight-color-list {
+  .#{$key} {
+    color: $value !important;
+  }
+}

@@ -1,0 +1,74 @@
+.VideoLooper {
+  position: relative;
+
+  video {
+    vertical-align: bottom;
+  }
+}
+
+.VideoLooperAction {
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border: 0;
+  background-color: rgba($color-black, 0.3);
+  color: $color-white;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &.play {
+    // animation: VideoLooperFadeOut 1s ease-out 1 forwards;
+    opacity: 0;
+  }
+
+  &.smallAction {
+    top: auto;
+    right: spacing(1);
+    bottom: spacing(1);
+    left: auto;
+    width: spacing(4);
+    height: spacing(4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: rgba($color-white, 0.5);
+    line-height: 1;
+    opacity: 1;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: rgba($color-black, 0.3);
+      color: $color-white;
+    }
+  }
+}
+
+.VideoLooperProgress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba($color-white, 0.1);
+}
+
+.VideoLooperProgressInner {
+  height: spacing(0.5);
+  transition: width 0.25s linear;
+  background-color: $color-primary;
+}
+
+// @keyframes VideoLooperFadeOut {
+//   0% {
+//     opacity: 1;
+//   }
+//   100% {
+//     opacity: 0;
+//   }
+// }

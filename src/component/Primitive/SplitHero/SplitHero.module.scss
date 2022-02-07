@@ -1,0 +1,78 @@
+$toggle-width: $breakpoint-tabletLandscape;
+
+.SplitHero {
+  position: relative;
+  background-color: $color-grey25;
+  color: $color-white;
+  min-height: spacing(56);
+  display: flex;
+
+  @include mq($toggle-width) {
+    min-height: spacing(42);
+  }
+}
+
+.SplitHeroContent {
+  @include mq($max: $toggle-width - 1) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: flex-end;
+
+    > * {
+      flex: 1 0 auto;
+    }
+  }
+
+  @include mq($toggle-width) {
+    padding: spacing(4);
+    flex: 1 0 50%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.SplitHeroHeading {
+  @include mq($max: $toggle-width - 1) {
+    padding: spacing(4);
+    background-image: linear-gradient(
+      0deg,
+      rgba($color-grey25, 1) 0%,
+      rgba($color-grey25, 0) 86%
+    );
+  }
+}
+
+.SplitHeroDescription {
+  display: none;
+
+  @include mq($toggle-width) {
+    display: block;
+  }
+}
+
+.SplitHeroAction {
+  display: none;
+  pointer-events: none;
+  position: relative;
+  z-index: 1;
+
+  @include mq($toggle-width) {
+    display: inline-block;
+  }
+
+  * {
+    pointer-events: all;
+  }
+}
+
+.SplitHeroImage {
+  flex: 1 0 auto;
+
+  @include mq($toggle-width) {
+    flex: 1 0 50%;
+  }
+}

@@ -1,0 +1,6 @@
+@mixin grid-base() {
+  box-sizing: border-box;
+  vertical-align: top;
+  display: inline-block;
+  width: 100%; // Set default width
+}

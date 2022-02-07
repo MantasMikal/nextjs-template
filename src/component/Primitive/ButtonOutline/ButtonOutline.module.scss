@@ -1,0 +1,22 @@
+.ButtonOutline {
+  padding: (spacing(1.25) - 1) (spacing(2) - 1);
+  border: 1px solid;
+  line-height: spacing(2.5);
+  border-radius: $radius-standard;
+  color: $color-primary;
+  text-decoration: none;
+  transition: all $duration-standard $easing-standard;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: rgba($color-primary, 0.2);
+    color: $color-primary;
+    transition-duration: $duration-shortest;
+  }
+}
+
+.disabled {
+  color: $color-grey50;
+  border-color: $color-grey75;
+}

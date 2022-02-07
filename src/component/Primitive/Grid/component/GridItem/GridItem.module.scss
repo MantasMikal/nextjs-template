@@ -1,0 +1,45 @@
+@import '../lib/GridBase';
+@import '../lib/GridWidths';
+
+$columns: (
+  m: (
+    2
+  ),
+  t: (
+    2,
+    3
+  ),
+  d: (
+    3,
+    4
+  )
+);
+
+.GridItem {
+  @include grid-base;
+}
+
+@include grid-widths('m', $columns);
+
+@include mq($breakpoint-tablet) {
+  @include grid-widths('t', $columns);
+}
+
+@include mq($breakpoint-desktop) {
+  @include grid-widths('d', $columns);
+}
+
+.trailingGap-default {
+  margin-bottom: spacing(2);
+}
+
+.trailingGap-mobile {
+  @include mq($max: $breakpoint-tablet) {
+    margin-bottom: spacing(2);
+  }
+}
+
+// :export {
+//   /* stylelint-disable-next-line property-no-unknown */
+//   columns: map-keys($columns);
+// }

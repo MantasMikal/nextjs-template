@@ -1,0 +1,22 @@
+.DateCard {
+  max-width: spacing(8);
+  border: 1px solid;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: $radius-standard;
+}
+
+.DateCardPrimary {
+  font-size: 0.8em;
+}
+
+.DateCardSecondary {
+  line-height: 1;
+  padding: spacing(0.75) 0;
+  font-size: 2em;
+  font-weight: 700;
+  border-top: 1px solid;
+  font-variant-numeric: tabular-nums;
+}
